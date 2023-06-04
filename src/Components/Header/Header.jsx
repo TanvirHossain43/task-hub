@@ -6,6 +6,7 @@ const Header = () => {
     const options = <>
 
         <li><Link to="/">Home</Link></li>
+        <li><Link to="addtask">Add Task</Link></li>
 
     </>
 
