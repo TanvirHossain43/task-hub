@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Home = () => {
@@ -50,7 +51,7 @@ const Home = () => {
                                     <p>Mark as Complete</p>
                                 </div>
                                 <div className='space-x-2'>
-                                    <button className="btn btn-primary">Update</button>
+                                    <Link to={`/updatetask/${task._id}`}><button className="btn btn-primary">Update</button></Link>
                                     <button onClick={()=>handleDelete(task._id)} className="btn btn-warning">Delete</button>
                                 </div>
                             </div>
