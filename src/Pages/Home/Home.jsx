@@ -55,7 +55,7 @@ const Home = () => {
 
     return (
 
-        <div className='grid md:grid-cols-2 lg:grid-cols-3  gap-y-6 justify-items-center pt-10  pb-10 text-white mt-10'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3  gap-y-6 justify-items-center pt-10  pb-10 text-white mt-10 lg:mt-4 md:mt-4'>
             {
                 tasks.map(task =>
 
