@@ -8,6 +8,7 @@ const Home = () => {
     useTitle('Home')
 
     const [tasks, setTasks] = useState([])
+    
 
     useEffect(() => {
         fetch('https://assignment-server-side-pink.vercel.app/tasks')
@@ -54,7 +55,7 @@ const Home = () => {
 
     return (
 
-        <div className='grid md:grid-cols-2 lg:grid-cols-3  gap-y-6 justify-items-center pt-10  pb-10 text-white'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3  gap-y-6 justify-items-center pt-10  pb-10 text-white mt-10'>
             {
                 tasks.map(task =>
 
