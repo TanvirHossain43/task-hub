@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+    const [activeLink, setActiveLink] = useState('')
+
+    const handleClick = (link) => {
+        setActiveLink(link)
+    }
 
     const options = <>
 
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="addtask">Add Task</Link></li>
+        <li className='text-lg font-semibold'>
+            <Link to="/" onClick={() => handleClick('/')} className={` ${activeLink === '/' ? 'text-blue-800 text-xl ' : ''
+                }`}>
+                Home
+            </Link>
+        </li>
+
+        <li className='text-lg font-semibold ml-2'>
+            <Link to="/addtask" className={` ${activeLink === 'addtask' ? 'text-blue-800 text-xl ' : ''
+                }`}
+                onClick={() => handleClick('addtask')}>
+                Add Task</Link>
+        </li>
 
     </>
 
     return (
         <div>
-            <div className="navbar bg-opacity-30 bg-black text-white max-w-screen-xl">
+            <div className="navbar bg-opacity-30 bg-black text-white max-w-screen-xl rounded-lg">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -23,7 +39,7 @@ const Header = () => {
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Task Hub</a>
+                    <Link to="/" className="btn btn-ghost normal-case text-3xl font-bold text-orange-700">Task Hub</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -31,7 +47,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="avatar navbar-end">
-                    
+
                 </div>
             </div>
         </div>

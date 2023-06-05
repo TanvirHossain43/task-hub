@@ -1,11 +1,16 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 
 const UpdateTask = () => {
+    // custom hook for dynamic title
+    useTitle('Update Task')
+
     const tasks = useLoaderData();
     console.log(tasks)
-    const {title,description,_id}=tasks;
+    const { title, description, _id } = tasks;
+    console.log(title)
 
     const handleUpdateTask = (event) => {
         event.preventDefault();
@@ -22,7 +27,7 @@ const UpdateTask = () => {
         const proceed = confirm('Are you sure you want to update the toy?');
 
         if (proceed) {
-            fetch(`http://localhost:5000/tasks/${_id}`, {
+            fetch(`https://assignment-server-side-pink.vercel.app/tasks/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,20 +58,20 @@ const UpdateTask = () => {
     }
 
     return (
-        <form onSubmit={handleUpdateTask} className="form-control w-full max-w-xs mx-auto">
+        <form onSubmit={handleUpdateTask} className="form-control w-full lg:w-1/2 md:w-1/2 mx-auto mt-10 bg-gray-400 p-6 rounded-xl">
 
             <label className="label">
-                <span className="label-text">Task Title</span>
+                <span className="label-text text-lg font-semibold">Task Title</span>
             </label>
-            <input type="text" placeholder="Enter Task Title" className="input input-bordered w-full max-w-xs" name='title' defaultValue={title} />
+            <input type="text" placeholder="Enter Task Title" className="input input-bordered w-full" name='title' defaultValue={title} />
 
             <label className="label">
-                <span className="label-text">Description</span>
+                <span className="label-text text-lg font-semibold">Description</span>
             </label>
             <textarea className="textarea textarea-bordered h-24" placeholder="write task description" name='description' defaultValue={description}></textarea>
 
             <div className=' mt-3'>
-                <button className='btn btn-primary w-full max-w-xs'>Update Task</button>
+                <button className='btn btn-primary w-full '>Update Task</button>
             </div>
 
         </form>

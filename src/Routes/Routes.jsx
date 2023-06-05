@@ -3,6 +3,7 @@ import Main from "../LayOut/Main";
 import Home from "../Pages/Home/Home";
 import AddTask from "../Pages/AddTask/AddTask";
 import UpdateTask from "../Pages/UpdateTask/UpdateTask";
+import Error from "../Pages/ErrorPage/Error";
 
 
 export const router = createBrowserRouter([
@@ -21,10 +22,14 @@ export const router = createBrowserRouter([
             {
                 path:'/updatetask/:id',
                 element:<UpdateTask></UpdateTask>,
-                loader:({params})=>fetch(`http://localhost:5000/tasks/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-server-side-pink.vercel.app/tasks/${params.id}`)
             }
 
         ]
     },
+    {
+        path:'*',
+        element:<Error></Error>
+    }
 
 ]);

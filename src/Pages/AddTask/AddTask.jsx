@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 
 const AddTask = () => {
+    // custom hook for dynamic title
+    useTitle('Add Task')
 
     const [selectedStatus, setStatus] = useState('')
 
@@ -23,7 +26,7 @@ const AddTask = () => {
             status: status
         }
         console.log(newTask)
-        fetch('http://localhost:5000/tasks', {
+        fetch('https://assignment-server-side-pink.vercel.app/tasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -38,26 +41,28 @@ const AddTask = () => {
                         'Good Job!',
                         'success'
                     )
+
                 }
             })
+
 
     }
 
     return (
 
-        <form onSubmit={handleAddTask} className="form-control w-full max-w-xs mx-auto">
+        <form onSubmit={handleAddTask} className="form-control w-full lg:w-1/2 md:w-1/2 mx-auto mt-10 bg-gray-400 p-6 rounded-xl">
 
             <label className="label">
-                <span className="label-text">Task Title</span>
+                <span className="label-text text-lg font-semibold">Task Title</span>
             </label>
-            <input type="text" placeholder="Enter Task Title" className="input input-bordered w-full max-w-xs" name='title' />
+            <input type="text" placeholder="Enter Task Title" className="input input-bordered w-full " name='title' required />
 
             <label className="label">
-                <span className="label-text">Description</span>
+                <span className="label-text text-lg font-semibold">Description</span>
             </label>
-            <textarea className="textarea textarea-bordered h-24" placeholder="write task description" name='description'></textarea>
+            <textarea className="textarea textarea-bordered h-24" placeholder="write task description" name='description' required></textarea>
 
-            <select className="select select-bordered w-full max-w-xs mt-3"
+            <select className="select select-bordered w-full  mt-3"
                 value={selectedStatus}
                 onChange={handleStatus}
             >
@@ -67,7 +72,7 @@ const AddTask = () => {
             </select>
 
             <div className=' mt-3'>
-                <button className='btn btn-primary w-full max-w-xs'>Add Task</button>
+                <button className='btn btn-primary w-full '>Add Task</button>
             </div>
 
         </form>
