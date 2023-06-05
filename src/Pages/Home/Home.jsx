@@ -16,10 +16,9 @@ const Home = () => {
     }, [])
 
     const handleStatusUpdate = taskId => {
-        // Find the task by ID
+
         const updatedTasks = tasks.map((task) => {
             if (task._id === taskId) {
-                // Toggle the status between 'pending' and 'completed'
                 const updatedStatus = task.status === 'pending' ? 'completed' : 'pending';
                 return { ...task, status: updatedStatus };
             }
@@ -41,7 +40,7 @@ const Home = () => {
                     console.log(data)
                     if (data.deletedCount > 0) {
                         Swal.fire(
-                            'Toy Deleted successfully!',
+                            'Task Deleted successfully!',
                             'Good Job!',
                             'success'
                         )

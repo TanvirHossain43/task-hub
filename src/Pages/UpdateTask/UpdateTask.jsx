@@ -24,7 +24,7 @@ const UpdateTask = () => {
 
         }
         console.log(updatedTaskData)
-        const proceed = confirm('Are you sure you want to update the toy?');
+        const proceed = confirm('Are you sure you want to update the task?');
 
         if (proceed) {
             fetch(`https://assignment-server-side-pink.vercel.app/tasks/${_id}`, {
@@ -51,7 +51,7 @@ const UpdateTask = () => {
                 })
                 .catch(error => {
                     console.error('Error updating toy:', error);
-                    // Handle the error and show an error message to the user
+                    
                 });
         }
 
